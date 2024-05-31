@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors = ['Wim den Braven']
   spec.email = ['wimdenbraven@persuavis.com']
 
-  spec.summary = 'bp3-formtastic.'
+  spec.summary = 'bp3-formtastic adapts formtastic for BP3 (persuavis/black_phoebe_3)..'
   # spec.description = "TODO: Write a longer description or delete this line."
   spec.homepage = 'https://www.black-phoebe.com'
   spec.license = 'MIT'
@@ -31,6 +31,8 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
+  spec.add_dependency 'actionpack', ['>= 7.1.2', '< 8']
+  spec.add_dependency 'activesupport', ['>= 7.1.2', '< 8']
   spec.add_dependency 'formtastic', '~> 5.0'
 
   spec.add_development_dependency 'byebug'
