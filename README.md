@@ -1,8 +1,7 @@
 # Bp3::Formtastic
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/bp3/formtastic`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+bp3-formtastic adapts formtastic for BP3, the persuavis/black_phoebe_3
+multi-site multi-tenant rails application.
 
 ## Installation
 
@@ -22,17 +21,27 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
-
+In your application's `config/initializers/bp3-action_dispatch` initializer, specify the name of the class 
+that controls whether to show a formtastic input control or not:
+```ruby
+Bp3::Formtastic.input_control_class_name = 'Vizfact::Input'
+```
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bin/setup` to install dependencies. Then, run 
+`rake spec` to run the tests. You can also run `bin/console` for an interactive 
+prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To install this gem onto your local machine, run `rake install`. To release a 
+new version, update the version number in `version.rb`, and then run 
+`rake release`, which will create a git tag for the version, push git 
+commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
-## Contributing
+## Testing
+Run `rake` to run rspec tests and rubocop linting.
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/bp3-formtastic.
+## Documentation
+A `.yardopts` file is provided to support yard documentation.
 
 ## License
 
