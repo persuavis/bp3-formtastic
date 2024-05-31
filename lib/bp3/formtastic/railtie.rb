@@ -29,20 +29,24 @@ module Bp3
                     # puts "input_wrapping s:#{site.id} c:#{controller} a:#{action} " \
                     #                     "e:#{method} n:#{field_name} as:#{options[:as].inspect}"
 
-                    viz = Vizfact::Input.where(sites_site: site,
-                                               element_controller: controller,
-                                               element_action: action,
-                                               element_name: field_name)
-                                        .or(Vizfact::Input.where(sites_site: site,
-                                                                 element_controller: controller,
-                                                                 element_action: action,
-                                                                 element_ident: dom_id)).first
+                    viz = input_control_class.where(sites_site: site,
+                                                    element_controller: controller,
+                                                    element_action: action,
+                                                    element_name: field_name)
+                                             .or(input_control_class.where(sites_site: site,
+                                                                      element_controller: controller,
+                                                                      element_action: action,
+                                                                      element_ident: dom_id)).first
                     return nil if viz.present? && !viz.show_element
 
                     super
                   end
 
                   private
+
+                  def input_control_class
+                    Bp3::Formtastic.input_control_class
+                  end
 
                   def field_name
                     "#{object_name}[#{input_name}]"
