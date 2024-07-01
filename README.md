@@ -4,7 +4,6 @@ bp3-formtastic adapts formtastic for BP3, the persuavis/black_phoebe_3
 multi-site multi-tenant rails application.
 
 ## Installation
-
 Add this line to your application's Gemfile:
 
 ```ruby
@@ -20,14 +19,13 @@ Or install it yourself as:
     $ gem install bp3-formtastic
 
 ## Usage
-
 In your application's `config/initializers/bp3-action_dispatch` initializer, specify the name of the class 
 that controls whether to show a formtastic input control or not:
 ```ruby
 Bp3::Formtastic.input_control_class_name = 'Vizfact::Input'
 ```
-## Development
 
+## Development
 After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 `rake spec` to run the tests. You can also run `bin/console` for an interactive 
 prompt that will allow you to experiment.
@@ -44,5 +42,4 @@ Run `rake` to run rspec tests and rubocop linting.
 A `.yardopts` file is provided to support yard documentation.
 
 ## License
-
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
