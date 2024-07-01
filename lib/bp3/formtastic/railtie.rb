@@ -25,7 +25,7 @@ module Bp3
                     # workspace = template.controller.send(:current_workspace)
                     controller = template.controller.class.name
                     action = template.controller.action_name
-                    builder.id.gsub(/_#{UUID_REGEX}/, '')
+                    builder.id&.gsub(/_#{UUID_REGEX}/, '')
                     # puts "input_wrapping s:#{site.id} c:#{controller} a:#{action} " \
                     #                     "e:#{method} n:#{field_name} as:#{options[:as].inspect}"
 
@@ -34,9 +34,9 @@ module Bp3
                                                     element_action: action,
                                                     element_name: field_name)
                                              .or(input_control_class.where(sites_site: site,
-                                                                      element_controller: controller,
-                                                                      element_action: action,
-                                                                      element_ident: dom_id)).first
+                                                                           element_controller: controller,
+                                                                           element_action: action,
+                                                                           element_ident: dom_id)).first
                     return nil if viz.present? && !viz.show_element
 
                     super
