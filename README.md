@@ -19,11 +19,21 @@ Or install it yourself as:
     $ gem install bp3-formtastic
 
 ## Usage
-In your application's `config/initializers/bp3-action_dispatch` initializer, specify the name of the class 
+In your application's `config/initializers/bp3-formtastic` initializer, specify the name of the class 
 that controls whether to show a formtastic input control or not:
 ```ruby
 Bp3::Formtastic.input_control_class_name = 'Vizfact::Input'
 ```
+
+In your application's formtastic configuration file (typically `config/initializers/formtastic`), 
+specify which form builder to use:
+```ruby
+Rails.application.config.after_initialize do
+  Formtastic::Helpers::FormHelper.builder = Bp3::Formtastic::VizFormBuilder
+end
+```
+Specify `Bp3::Formtastice::VizFormBuilderWithCreate` if you want new `Bp3::Formtastic.input_control_class_name` 
+records to be added for each form input encountered on a form.
 
 ## Development
 After checking out the repo, run `bin/setup` to install dependencies. Then, run 
