@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    bp3-formtastic (0.1.2)
+    bp3-formtastic (0.2.0)
       actionpack (>= 7.1.2, < 8)
       actionview (>= 7.1.2, < 8)
       activesupport (>= 7.1.2, < 8)
