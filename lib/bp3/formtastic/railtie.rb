@@ -12,31 +12,16 @@ module Bp3
                 EXCLUDED_COLUMNS = %w[rqid sqnr].freeze
                 UUID_REGEX = /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/
 
-                # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
                 # PrependInputs provides formtastic input overrides
                 module PrependInputs
                   def input_wrapping(&)
                     return super if column.nil? # e.g. when called for individual details fields
+                    return super if Bp3::Formtastic.input_control_class.nil?
+                    return super unless builder.respond_to?(:viz)
                     return nil if column.name.in?(EXCLUDED_COLUMNS)
 
-                    # url = template.controller.request.url
-                    site = template.controller.send(:current_site)
-                    # tenant = template.controller.send(:current_tenant)
-                    # workspace = template.controller.send(:current_workspace)
-                    controller = template.controller.class.name
-                    action = template.controller.action_name
                     builder.id&.gsub(/_#{UUID_REGEX}/, '')
-                    # puts "input_wrapping s:#{site.id} c:#{controller} a:#{action} " \
-                    #                     "e:#{method} n:#{field_name} as:#{options[:as].inspect}"
-
-                    viz = input_control_class.where(sites_site: site,
-                                                    element_controller: controller,
-                                                    element_action: action,
-                                                    element_name: field_name)
-                                             .or(input_control_class.where(sites_site: site,
-                                                                           element_controller: controller,
-                                                                           element_action: action,
-                                                                           element_ident: dom_id)).first
+                    viz = builder.viz(field_name, dom_id)
                     return nil if viz.present? && !viz.show_element
 
                     super
@@ -52,7 +37,6 @@ module Bp3
                     "#{object_name}[#{input_name}]"
                   end
                 end
-                # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
 
                 module Base
                   prepend PrependInputs
