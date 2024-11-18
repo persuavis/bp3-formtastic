@@ -2,6 +2,9 @@
 
 require 'active_support/core_ext/module/attribute_accessors'
 require 'active_support/inflector'
+require 'action_dispatch' # to avoid the following ActionDispatch loading error
+#   uninitialized constant Rails::Engine::Configuration::ActionDispatch
+#     ./vendor/bundle/ruby/3.2.0/gems/railties-8.0.0/lib/rails/engine/configuration.rb:47:in `initialize'
 
 require_relative 'formtastic/viz_form_builder'
 require_relative 'formtastic/viz_form_builder_with_create'
