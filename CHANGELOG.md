@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+## [0.2.1] - 2024-11-18
+
+- Relax gem constraints
+
 ## [0.2.0] - 2024-08-20
 
 - Create form builders
