@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+## [0.2.2] - 2026-01-12
+
+- Update gems
+
 ## [0.2.1] - 2024-11-18
 
 - Relax gem constraints
