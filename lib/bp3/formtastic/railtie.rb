@@ -10,7 +10,6 @@ module Bp3
             module ::Formtastic
               module Inputs
                 EXCLUDED_COLUMNS = %w[rqid sqnr].freeze
-                UUID_REGEX = /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/
 
                 # PrependInputs provides formtastic input overrides
                 module PrependInputs
@@ -20,7 +19,6 @@ module Bp3
                     return super unless builder.respond_to?(:viz)
                     return nil if column.name.in?(EXCLUDED_COLUMNS)
 
-                    builder.id&.gsub(/_#{UUID_REGEX}/, '')
                     viz = builder.viz(field_name, dom_id)
                     return nil if viz.present? && !viz.show_element
 
