@@ -1,6 +1,9 @@
 ## [Unreleased]
 
-- File created input control records under the controller's current site, tenant and workspace
+## [0.2.3] - 2026-10-28
+
+- Ensure tenant and workspace for Vizfact::Input records
+  File created input control records under the controller's current site, tenant and workspace
 - Remove a no-op builder id substitution and its UUID_REGEX
 
 ## [0.2.2] - 2026-01-12
