@@ -27,8 +27,14 @@ module Bp3
 
       private
 
+      # Filed under the site load_vizfacts reads from, so the next render finds the record, and under
+      # that site's tenant and workspace. Left to the model's defaults, a page acting on a target site
+      # would take its site, tenant or workspace from the target instead.
       def vizfact_attrs(element_name, element_ident)
         {
+          sites_site: site,
+          tenant: template.controller.send(:current_tenant),
+          workspaces_workspace: template.controller.send(:current_workspace),
           element_controller: template.controller.class.name,
           element_action: template.controller.action_name,
           element_name:,
@@ -40,11 +46,14 @@ module Bp3
       def load_vizfacts
         return if input_control_class.nil?
 
-        site = template.controller.send(:current_site)
         controller = template.controller.class.name
         action = template.controller.action_name
         @vizfacts = input_control_class.where(sites_site: site, element_controller: controller,
                                               element_action: action).to_a
+      end
+
+      def site
+        @site ||= template.controller.send(:current_site)
       end
 
       def input_control_class

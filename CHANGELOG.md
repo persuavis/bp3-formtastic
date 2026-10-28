@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+- File created input control records under the controller's current site, tenant and workspace
+
 ## [0.2.2] - 2026-01-12
 
 - Update gems
