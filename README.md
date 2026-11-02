@@ -32,7 +32,7 @@ Rails.application.config.after_initialize do
   Formtastic::Helpers::FormHelper.builder = Bp3::Formtastic::VizFormBuilder
 end
 ```
-Specify `Bp3::Formtastice::VizFormBuilderWithCreate` if you want new `Bp3::Formtastic.input_control_class_name` 
+Specify `Bp3::Formtastic::VizFormBuilderWithCreate` if you want new `Bp3::Formtastic.input_control_class_name`
 records to be added for each form input encountered on a form.
 
 ## Development
