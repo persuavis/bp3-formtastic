@@ -16,7 +16,7 @@ module Bp3
     mattr_accessor :input_control_class_name
 
     def self.input_control_class
-      @@input_control_class ||= input_control_class_name&.constantize # rubocop:disable Style/ClassVars
+      input_control_class_name&.constantize
     end
   end
 end
